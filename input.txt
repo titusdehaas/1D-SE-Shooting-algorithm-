@@ -1,0 +1,3 @@
+!3point:         shooting: 
+!N	h	N	h	v	covergence 
+10	0.1	100	0.1	1	0.001
