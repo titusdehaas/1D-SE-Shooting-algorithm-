@@ -1,9 +1,11 @@
 program TestProgram 
-   use ShootingTestModule
-   use ShootingModule  
+   use TestModule
+   use PotentialModule
    implicit none 
    save 
    type (Calculation) :: test 
-   call TestNewCalc(test) 
+   call TestNewCalc(test)
+   call TestPotential(test)  
+   call TestThreePointSolver(test) 
 end program 
 
