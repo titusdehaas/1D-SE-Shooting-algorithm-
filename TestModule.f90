@@ -46,7 +46,8 @@ contains
       character(32) :: potential_type
       integer :: i 
       real(8), parameter :: treshold = 0.05
-    
+      logical :: error = .false.
+       
       potential_type = "particle in a box"
 
       write(*,*) "------ Testing the 3-point scheme algorithm ------"
@@ -59,18 +60,22 @@ contains
 
       call ThreePointSolver(self%calculation_grid%N, self%calculation_grid%h, potential_array, eigenvalues, eigenvectors)
       write(*,*) "these are the first ten eigenvalues:"
-      do i = 1, 20 
+      do i = 1, 10 
          write(*,*) eigenvalues(i) 
       end do
 
       call AnalyticalSolutionPIAB(self, analytical_solutions)
       do i = 1, 10
          if (analytical_solutions(i) - eigenvalues(i) > treshold) then
-            print*, "Error detected in three point scheme calculation"
-         else
-            write(*,*) "three point scheme calculation succesfully finished"
-         end if
+            print*, "Error detected in three point scheme calculation: solution", i
+            error = .true. 
+         end if  
       end do
+      if (error) then
+         write(*,*)"Try to increase gridsize, or decrease meshsize"
+      else
+         write(*,*) "Three point scheme calculation was succesfull"
+      endif
 
 
    end subroutine 
@@ -88,8 +93,8 @@ contains
       call ShootingAlgorithm(self%calculation_grid%N, self%calculation_grid%h, self%init_grid%N, self%init_grid%h, & 
          &self%convergence, potential_array, self%boundary_conditions, self%number_solutions, eigenvalues, eigenvectors) 
      
-      write(*,*) "Shooting algorithm first ten eigenvalues:"
-      do i = 1, 10
+      write(*,*) "Shooting algorithm first:", self%number_solutions," eigenvalues:"
+      do i = 1, self%number_solutions
          write(*,*) eigenvalues(i)
       end do 
       
@@ -110,7 +115,7 @@ contains
 
       write(*,*) "first ", number_solutions, "analytical solutions for a partice in a box:"
       do i = 1, number_solutions 
-         energy(i) = (i**2)*(pi**2)*(1.0d0/(1.0d0*m*(l**2)))
+         energy(i) = (i**2)*(pi**2)*(1.0d0/(2.0d0*m*(l**2)))
       end do 
       
       do i = 1, number_solutions 

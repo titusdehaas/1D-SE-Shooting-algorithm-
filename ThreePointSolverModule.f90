@@ -49,7 +49,8 @@ contains
        
 
       call diagonalize(l, optional_eigenvectors, eigenvalues) 
-      if(present(eigenvectors)) eigenvectors = optional_eigenvectors 
+      if(present(eigenvectors)) eigenvectors = optional_eigenvectors
+      eigenvalues = eigenvalues*0.5d0 
    end subroutine  
 end module 
 
