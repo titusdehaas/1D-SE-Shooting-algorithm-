@@ -7,5 +7,7 @@ program TestProgram
    call TestNewCalc(test)
    call TestPotential(test)  
    call TestThreePointSolver(test) 
+    ! call TestShootingAlgorithm (test) 
 end program 
+
 

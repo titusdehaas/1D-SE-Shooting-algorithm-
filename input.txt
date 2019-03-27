@@ -1,3 +1,10 @@
-!3point:         shooting: 
-!N	h	N	h	v	covergence 
-6	1	100	0.1	1	0.001
+!estimation:    shooting: 
+!size 	mesh 	size 	mesh 	covergence	Potential Type 
+10	1	1000	0.01	0.001		"particle in a box"
+
+!boundary conditions	Number of solutions 	
+0 0.0002542 0.02426 0   10 
+
+
+
+

@@ -14,22 +14,26 @@ contains
 
    subroutine NewCalc(self)
       type (Calculation), intent (inout) :: self
-      real(8):: h, h2, convergence 
-      integer:: v, N, N2 
-      character(32) :: firstline, secondline 
+      real(8):: init_mesh, mesh, convergence, boundary_conditions(4) 
+      integer:: init_gridsize, gridsize, number_solutions  
+      character(32) :: dummyline, potential_type 
 
       open (7, file = "input.txt") 
-      read(7,*) firstline
-      read(7,*) secondline  
-      read(7,*) N, h, N2, h2, v,  convergence
+      read(7,*) dummyline
+      read(7,*) dummyline  
+      read(7,*) init_gridsize, init_mesh, gridsize, mesh, convergence, potential_type
+      read(7,*) dummyline
+      read(7,*) boundary_conditions(1), boundary_conditions(2), boundary_conditions(3), boundary_conditions(4), number_solutions
       close(7)
 
-      self%ThreePointGrid%N = N
-      self%ThreePointGrid%h = h
-      self%ShootingGrid%N = N2
-      self%ShootingGrid%h = h2
-      self%potential = v 
+      self%init_grid%N = init_gridsize 
+      self%init_grid%h = init_mesh
+      self%calculation_grid%N = gridsize 
+      self%calculation_grid%h = mesh 
+      self%potential_type  = potential_type  
       self%convergence = convergence 
+      self%boundary_conditions = boundary_conditions 
+      self%number_solutions = number_solutions 
 
       ! this can be writen in a quicker way once done 
    end subroutine 
@@ -40,8 +44,8 @@ contains
       real(8), allocatable :: potential(:), eigenvalues(:), eigenvectors(:,:) 
       integer:: N 
 
-      N = self%ThreePointGrid%N 
-      h = self%ThreePointGrid%h
+      N = self%init_grid%N 
+      h = self%init_grid%h
 
       Call NewGrid(N, h, Potential) 
       call ThreePointSolver(N, h, potential, eigenvalues, eigenvectors) 
