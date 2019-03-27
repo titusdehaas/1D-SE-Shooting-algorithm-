@@ -1,9 +1,9 @@
-!estimation:    shooting: 
-!size 	mesh 	size 	mesh 	covergence	Potential Type 
-1000	0.01	100	0.1	1.0e-7		"particle in a box"
+!estimation:    shooting: 						for gaussian:
+!size 	mesh 	size 	mesh 	covergence	Potential Type		V0 	alpha
+1000	0.01	1000	0.01	1.0e-5		"particle in a box"     
 
 !boundary conditions				Number of solutions 	
-0.000001 0.00014235 0.00014235 0.000001   	4 
+0 0.002809907 -0.002809907 0 	                2
 
 
 

@@ -35,17 +35,17 @@ contains
       end do 
    end subroutine
 
-   subroutine NewPotential(N,h, potential, potential_array, v0, alpha) 
+   subroutine NewPotential(N,h, potential_type, potential_array, v0, alpha) 
       !subroutine that genrates an array containing the values of a speciefied potential for a given gridsize and meshsize 
       real(8), intent(in):: h ! meshsize
       integer, intent(in):: N ! Gridsize 
-      character(32), intent(in) :: potential !pass type of potential as a string
+      character(32), intent(in) :: potential_type !pass type of potential as a string
       real(8), intent(in), optional:: v0, alpha
      
       real(8), allocatable, intent(out) :: potential_array(:)    
-      if (potential == "particle in a box") then 
+      if (potential_type == "particle in a box") then 
          call ParticleInAbox(N, h, potential_array) 
-      elseif (potential == "gaussian") then 
+      elseif (potential_type == "gaussian") then 
          call Gaussian(N, h, V0, alpha, potential_array) 
       else 
          write(*,*)"No valid potential was entered"
