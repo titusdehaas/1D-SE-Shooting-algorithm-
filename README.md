@@ -26,7 +26,7 @@ values of n do not converge to an eigenvalue. Also, the produced eigenvectors ar
 for n = 1 has 10 nodes, and not contiues. Also its starts aimed in the wrong direction. I think I've made and error somewhere in
 the formulas used in the shooting method. I've actually spend a lot of time trying to find the bug and im a bit sorrow that I was
 not able to find it. Therefore I was wondering if you maybe could have one final look at it before I officially hand it in? If not,
-it's also fine. In that case the is the final version. 
+it's also fine. In that case this is the final version. 
 
 Kind Regards,
 Titus 
