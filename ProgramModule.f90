@@ -44,7 +44,7 @@ contains
       read(7,*) dummyline  
       read(7,*) init_gridsize, init_mesh, gridsize, mesh, convergence, potential_type, D, alpha, x_e  
       read(7,*) dummyline
-      read(7,*) boundary_conditions(1), boundary_conditions(2), boundary_conditions(3), boundary_conditions(4), number_solutions
+      read(7,*) number_solutions
       close(7)
 
       ! writes the input parameters
@@ -54,7 +54,6 @@ contains
       self%calculation_grid%mesh = mesh 
       self%potential_type  = potential_type  
       self%convergence = convergence 
-      self%boundary_conditions = boundary_conditions 
       self%number_solutions = number_solutions 
       self%alpha = alpha 
       self%D = D
@@ -84,7 +83,7 @@ contains
       real(8), allocatable :: potential_array(:), eigenvalues(:), eigenvectors(:,:)
       character(32) :: potential_type
       integer :: i, gridsize, init_gridsize, number_solutions 
-      real(8) :: mesh, init_mesh, convergence, boundary_conditions(4), alpha, D, x_e
+      real(8) :: mesh, init_mesh, convergence, alpha, D, x_e
       
 
       !reading input parameters 
@@ -92,8 +91,7 @@ contains
       mesh = self%calculation_grid%mesh
       init_gridsize = self%init_grid%gridsize
       init_mesh = self%init_grid%mesh
-      convergence = self%convergence 
-      boundary_conditions = self%boundary_conditions
+      convergence = self%convergence
       number_solutions = self%number_solutions 
       alpha = self%alpha
       D = self%D

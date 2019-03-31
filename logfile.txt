@@ -1,0 +1,38 @@
+
+ =======================================================
+ coarse mesh size was set to    1.0000000000000000E-002
+ coarse grid size was set to:        1000
+ Shooting mesh size was set to:   1.0000000000000000E-002
+ Shooting grid size was set to         1000
+ Convergence accuracy was set to:   9.9999999999999995E-008
+ Number of solutions was set to:           1
+ Initialising for:Particle in a box               
+ =======================================================
+ ------------------------------------------------
+ -----------Shooting Algorithm Logfile-----------
+ ------------------------------------------------
+ calculation of the:           1 solution
+ ------------------------------------------------
+ ---cylce:           0
+ normfactor   9.9701643155025188     
+ newlambda   4.9151619450871167E-002
+ oldlambda   4.9249433380785364E-002
+  deltalambda   9.7813929914198101E-005
+ ------------------------------------------------
+ ---cylce:           1
+ normfactor   9.9465718652651400     
+ newlambda   4.9151183638328017E-002
+ oldlambda   4.9151619450871167E-002
+  deltalambda   4.3581254315048101E-007
+ ------------------------------------------------
+ ---cylce:           2
+ normfactor   9.9464616561374157     
+ newlambda   4.9151180276724452E-002
+ oldlambda   4.9151183638328017E-002
+  deltalambda   3.3616035615385810E-009
+ ------------------------------------------------
+ shooting algorithm has converged in:           3 cycles
+ 3 point eigenvalue:   4.9249433380785364E-002
+ Shooting algorithm eigenvalue:   4.9151180276724452E-002
+ ------------------------------------------------
+ ------------------------------------------------

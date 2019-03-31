@@ -2,8 +2,8 @@
 !size 	mesh 	size 	mesh 	covergence	Potential Type		D 	alpha    x_e
 1000	0.01	1000  0.01	1.0e-7		"Particle in a box"  	1.0d0	1.0d0    0.6 
 
-!boundary conditions				Number of solutions 	
-0.00 0.0028  0.0028 0.00 	                	10
+Number of solutions 	
+	1
 
 
 ! make sure that size*mesh is equal for both shooting and pre-estimation, since difference in l results in different results

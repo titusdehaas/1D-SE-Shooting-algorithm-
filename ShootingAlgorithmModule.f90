@@ -148,7 +148,7 @@ contains
          !write(*,*) "newlambda:", newlambda 
          !write(*,*) "----inwards array:-----"
               
-         !do i = x_m-10, x_m+1
+         !do i = 1, x_m+1
          !   write(*,*) i, ":", inwards_array(i) 
          !end do 
          !write(*,*)"---- outwards array----"
