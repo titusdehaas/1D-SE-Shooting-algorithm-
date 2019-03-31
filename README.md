@@ -20,6 +20,7 @@ TestModule.f90 contains two unit tests for the three-point scheme subroutine and
 WriterModule.f90 contains the subroutines that are used for writing the output files and the logfile
 
 ###################################################
+
 IMPORTANT NOTE: 
 Unfortunately the program still contains a bug. The shooting method does not (yet) produce the right eigenvalues. Somehow, the even
 values of n do not converge to an eigenvalue. Also, the produced eigenvectors are clearly not right. For example, the eigenvector 
@@ -30,5 +31,6 @@ it's also fine. In that case this is the final version.
 
 Kind Regards,
 Titus 
+
 ##################################################
 
