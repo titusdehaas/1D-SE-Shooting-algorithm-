@@ -21,7 +21,7 @@ contains
       real(8), allocatable, intent(out):: eigenvalues(:), eigenvectors(:,:)
       real(8), allocatable :: lambda(:), inwards_array(:), outwards_array(:), boundaryconditions(:,:)  
       integer :: i, j, x_m, cyclecount, maxcyclecount   
-      real(8) :: oldlambda, newlambda, deltalambda, normfactor, phisqrt1, phisqrt2 
+      real(8) :: oldlambda, newlambda, deltalambda, normfactor, phisqrt,  phisqrt1, phisqrt2 !lambda values and normalisation 
       real(8) :: derivative_inward, derivative_outward, integral_inward, integral_outward  ! derivatives and integral values
       real(8) :: difference_fractions, weighed_integral_in, weighed_integral_out, step_inward, step_outward !groupin together terms  
       type(OutputFile) :: log_type
@@ -180,9 +180,16 @@ contains
 
       !pasting the obtained eigenvalues and eigenfunctions in the therefore specified arrays 
       eigenvalues(j) = newlambda
-      eigenvectors( 1:x_m, j) = outwards_array(1:x_m) ! eigenvalue array is constructed from inwards solutions as the first slice
-      eigenvectors( x_m+1: gridsize, j) = inwards_array(2:x_m) ! and the outwards solution as the second slice
+      eigenvectors(j, 1:x_m) = outwards_array(1:x_m) ! eigenvalue array is constructed from inwards solutions as the first slice
+      eigenvectors(j, x_m+1: gridsize) = inwards_array(2:x_m) ! and the outwards solution as the second slice
       
+      !normalisation
+      print*, size(eigenvectors(j,:)) 
+      call newton_cotes((eigenvectors(j,:)**2), mesh, 1, gridsize, phisqrt)
+      normfactor = 1/phisqrt 
+      eigenvectors(j,:)  = eigenvectors(j,:)*normfactor 
+
+
 
       !logging the results of the shooting algorithm calculation
       write(*,*)"3 point eigenvalue:", j, "=", lambda(j) 
